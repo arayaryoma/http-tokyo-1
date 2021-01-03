@@ -1,4 +1,27 @@
-<!DOCTYPE html><html lang="en"><head><meta http-equiv="Content-type" content="text/html; charset=utf-8"><meta name="theme-color" content="#3498db"><meta name="viewport" content="width=device-width,initial-scale=1"><title>slide</title><meta property="og:title" content="slide"><meta property="og:type" content="article"><link href="vendor.7.5278ef3f61d35fb0b672.css" rel="stylesheet"><link href="main.4.d68101af64940a687982.css" rel="stylesheet"></head><body><div id="root"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="btn-sidebar" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg><article id="webslides"><section class="aligncenter"><h1>Response Status Codes 3xx</h1><p>あらや <a href="https://twitter.com/arayaryoma">@arayaryoma</a></p><p>2020-01-17 HTTP/Tokyo #1</p><p><a href="https://slides.araya.dev/http-tokyo-1/">slides.araya.dev/http-tokyo-1/</a></p></section><section class="aligncenter"><h2>参考資料</h2><ul><li><a href="https://tools.ietf.org/html/rfc7231#section-6.4">RFC7231</a></li><li><a href="https://tools.ietf.org/html/rfc7232#section-4.1">RFC7232</a></li><li><a href="https://tools.ietf.org/html/rfc7538#section-3">RFC7538</a></li><li><a href="https://triple-underscore.github.io/RFC7231-ja.html">RFC7231 和訳</a></li><li><a href="https://triple-underscore.github.io/RFC7232-ja.html">RFC7232 和訳</a></li></ul></section><section class="aligncenter"><h2>3xx 系の Status Codes</h2><ul><li>300 Multiple Choices<!-- --> [RFC7231]</li><li>301 Moved Permanently<!-- --> [RFC7231]</li><li>302 Found<!-- --> [RFC7231]</li><li>303 See Other<!-- --> [RFC7231]</li><li>304 Not Modified<!-- --> [RFC7232]</li><li>305 Use Proxy<!-- --> [RFC7231]</li><li>306 (Unused)<!-- --> [RFC7231]</li><li>307 Temporary Redirect<!-- --> [RFC7231]</li><li>308 Permanent Redirect<!-- --> [RFC7538]</li></ul></section><section class="aligncenter alignleft"><pre><code>[RFC7231]より
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="theme-color" content="#3498db" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    
+      <title>
+        Response Status Codes 3xx
+      </title>
+      <meta property="og:title" content="Response Status Codes 3xx" />
+      <meta property="og:type" content="article" />
+    
+    
+    
+    
+    
+    
+  <link href="vendor.7.d48dd25e0657c4ca5e0f.css" rel="stylesheet"><link href="main.4.d68101af64940a687982.css" rel="stylesheet"></head>
+
+  <body>
+    <div id="root">
+      <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="btn-sidebar" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg><article id="webslides"><section class="aligncenter"><h1>Response Status Codes 3xx</h1><p>あらや <a href="https://twitter.com/arayaryoma">@arayaryoma</a></p><p>2020-01-17 HTTP/Tokyo #1</p><p><a href="https://slides.araya.dev/http-tokyo-1/">slides.araya.dev/http-tokyo-1/</a></p></section><section class="aligncenter"><h2>参考資料</h2><ul><li><a href="https://tools.ietf.org/html/rfc7231#section-6.4">RFC7231</a></li><li><a href="https://tools.ietf.org/html/rfc7232#section-4.1">RFC7232</a></li><li><a href="https://tools.ietf.org/html/rfc7538#section-3">RFC7538</a></li><li><a href="https://triple-underscore.github.io/RFC7231-ja.html">RFC7231 和訳</a></li><li><a href="https://triple-underscore.github.io/RFC7232-ja.html">RFC7232 和訳</a></li></ul></section><section class="aligncenter"><h2>3xx 系の Status Codes</h2><ul><li>300 Multiple Choices <!-- -->[RFC7231]</li><li>301 Moved Permanently <!-- -->[RFC7231]</li><li>302 Found <!-- -->[RFC7231]</li><li>303 See Other <!-- -->[RFC7231]</li><li>304 Not Modified <!-- -->[RFC7232]</li><li>305 Use Proxy <!-- -->[RFC7231]</li><li>306 (Unused) <!-- -->[RFC7231]</li><li>307 Temporary Redirect <!-- -->[RFC7231]</li><li>308 Permanent Redirect <!-- -->[RFC7538]</li></ul></section><section class="aligncenter alignleft"><pre><code>[RFC7231]より
 ------------
 
 The 3xx (Redirection) class of status code indicates that further action needs to be taken by the user agent in order to fulfill the request.  If a Location header field (Section 7.1.2) is provided, the user agent MAY automatically redirect its request to the URI referenced by the Location field value, even if the specific status code is not understood.  Automatic redirection needs to done with care for methods not known to be safe, as defined in Section 4.2.1, since the user might not wish to redirect an unsafe request.
@@ -105,4 +128,7 @@ The server SHOULD generate a Location header field ([RFC7231], Section 7.1.2) in
 A 308 response is cacheable by default; i.e., unless otherwise indicated by the method definition or explicit cache controls (see [RFC7234], Section 4.2.2).
 
 Note: This status code is similar to 301 (Moved Permanently) ([RFC7231], Section 6.4.2), except that it does not allow changing the request method from POST to GET.
-</code></pre><ul><li>明示的なキャッシュ制御の指示がなければ、デフォルトでキャッシュ可能。</li><li>301 に似ているがリクエストメソッドを POST から GET に変更できない。</li></ul></section><section class="aligncenter"><h2>301, 302, 307, 308まとめ</h2><table><tr><td></td><td>永続的</td><td>一時的</td></tr><tr><td>リクエストメソッドの変更が可能</td><td>301</td><td>302</td></tr><tr><td>リクエストメソッドの変更を許可しない</td><td>308</td><td>307</td></tr></table></section><section class="aligncenter"><h2><a href="https://playground.araya.dev/http-redirections/">Demo</a></h2></section></article></div><script type="text/javascript" src="runtime.24ce0924f2c17750a632.bundle.js"></script><script type="text/javascript" src="vendor.7.5278ef3f61d35fb0b672.bundle.js"></script><script type="text/javascript" src="main.4.d68101af64940a687982.bundle.js"></script></body></html>
+</code></pre><ul><li>明示的なキャッシュ制御の指示がなければ、デフォルトでキャッシュ可能。</li><li>301 に似ているがリクエストメソッドを POST から GET に変更できない。</li></ul></section><section class="aligncenter"><h2>301, 302, 307, 308まとめ</h2><table><tr><td></td><td>永続的</td><td>一時的</td></tr><tr><td>リクエストメソッドの変更が可能</td><td>301</td><td>302</td></tr><tr><td>リクエストメソッドの変更を許可しない</td><td>308</td><td>307</td></tr></table></section><section class="aligncenter"><h2><a href="https://playground.araya.dev/http-redirections/">Demo</a></h2></section></article>
+    </div>
+  <script type="text/javascript" src="runtime.c168eeeebc7189d14ca8.bundle.js"></script><script type="text/javascript" src="vendor.7.d48dd25e0657c4ca5e0f.bundle.js"></script><script type="text/javascript" src="main.4.d68101af64940a687982.bundle.js"></script></body>
+</html>
